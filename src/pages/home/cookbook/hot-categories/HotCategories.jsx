@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { Grid } from 'antd-mobile';
-import { Item } from './StyleCategories'
+import { Item, Title } from './StyleCategories'
 
 
 
@@ -15,16 +15,21 @@ class HotCateGoies extends Component {
 
   render() {
     return (
-      <Grid data={this.state.list}
-        columnNum={4}
-        hasLine={false}
-        renderItem={dataItem => (
-          <Item>
-            {dataItem.img && <img src={dataItem.img} alt="" />}
-            <span>{dataItem.title}</span>
-          </Item>
-        )}
-      />
+      <>
+        <Title>
+          热门分类
+        </Title>
+        <Grid data={this.state.list}
+          columnNum={4}
+          hasLine={false}
+          renderItem={dataItem => (
+            <Item>
+              {dataItem.img && <img src={dataItem.img} alt="" />}
+              <span>{dataItem.title}</span>
+            </Item>
+          )}
+        />
+      </>
     )
   }
 

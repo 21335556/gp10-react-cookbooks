@@ -13,6 +13,15 @@ flex-direction: column;
   }
 `
 
+const Title = styled.div`
+  height: 0.5rem;
+  line-height:.5rem;
+  padding-left: .15rem;
+  background: #fff;
+  color: #666;
+`
+
 export {
-  Item
+  Item,
+  Title
 }
