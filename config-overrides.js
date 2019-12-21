@@ -12,5 +12,6 @@ module.exports = override(
     cookbook:path.resolve(__dirname, './src/pages/home/cookbook/'),
     assets: path.resolve(__dirname, './src/assets/'),
     components: path.resolve(__dirname, './src/components/'),
+    utils: path.resolve(__dirname, './src/utils/'),
   })
 );
