@@ -23,19 +23,20 @@ class Categories extends Component {
   }
 
   render() {
+    let path = this.props.match.path
     return (
       <StyledCategories>
         <Header onMessage={this.handleMessage}></Header>
         <Search background="#eee" hasBorder={false}></Search>
-        <Route path="/category" component={MenuLeft}></Route>
-        <Route path="/material" component={MenuRight}></Route>
+        <Route path={`${path}/category`} component={MenuLeft}></Route>
+        <Route path={`${path}/material`} component={MenuRight}></Route>
       </StyledCategories>
     )
   }
 
   handleMessage(dir) {
-    let path = dir === 'left' ? 'category' : 'material'
-    this.props.history.push(path)
+    let path = dir === 'left' ? '/category' : '/material'
+    this.props.history.push(this.props.match.path + path)
   }
 }
 

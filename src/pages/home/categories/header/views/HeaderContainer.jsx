@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import {StyledHeaderContainer as StyleHeader} from './StyledHeader'
 
+import { withRouter } from 'react-router-dom'
+
 class HeaderContainer extends Component {
   constructor(props) {
     super(props)
@@ -9,6 +11,17 @@ class HeaderContainer extends Component {
       dir: 'left'
     }
     this.handleClickMove = this.handleClickMove.bind(this)
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.location.pathname === '/home/category') {
+      return {
+        dir: 'left'
+      }
+    } 
+    return {
+      dir: 'right'
+    }
   }
 
   render() {
@@ -32,4 +45,4 @@ class HeaderContainer extends Component {
   }
 }
 
-export default HeaderContainer
+export default withRouter(HeaderContainer)

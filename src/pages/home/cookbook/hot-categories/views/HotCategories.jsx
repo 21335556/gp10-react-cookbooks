@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import HotCateGoiesUI from './HotCategoriesUI'
 
@@ -35,14 +36,18 @@ class HotCateGoies extends Component {
 
   render() {
     return (
-      <HotCateGoiesUI list={this.state.list}></HotCateGoiesUI>
+      <HotCateGoiesUI onItemClick={this.handleItemClick.bind(this)} list={this.state.list}></HotCateGoiesUI>
     )
   }
 
   componentDidMount() {
     this.props.loadData()
   }
+
+  handleItemClick() {
+    this.props.history.push('/list', { id: 0 })
+  }
 }
 
-export default connect(mapState, mapDispatch)(HotCateGoies)
+export default withRouter(connect(mapState, mapDispatch)(HotCateGoies))
 
