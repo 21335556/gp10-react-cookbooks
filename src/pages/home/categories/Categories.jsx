@@ -30,28 +30,14 @@ class Categories extends Component {
     let path = this.props.match.path
     let state = this.props.location.state
     let dir = state && state.dir || 'left'
-    console.log(dir);
     return (
       <StyledCategories>
         <Header onMessage={this.handleMessage}></Header>
         <Search background="#eee" hasBorder={false}></Search>
-        <TransitionGroup>
-          <CSSTransition
-            timeout={300}
-            key={this.props.location.key}
-            classNames={{
-              enter: 'animated',
-              enterActive: dir === 'left' ? 'slideInLeft' : 'slideInRight',
-              exit: 'animated',
-              exitActive: dir === 'left' ? 'slideOutLeft' : 'slideOutRight'
-            }}
-          >
-            <>
-              <Route path={`${path}/category`} component={MenuLeft}></Route>
-              <Route path={`${path}/material`} component={MenuRight}></Route>
-            </>
-          </CSSTransition>
-        </TransitionGroup>
+        <div className="contentWrap">
+          <Route path={`${path}/category`} children={(props) => <MenuLeft {...props} />}></Route>
+          <Route path={`${path}/material`} children={(props) => <MenuRight {...props} />}></Route>
+        </div>
       </StyledCategories>
     )
   }
