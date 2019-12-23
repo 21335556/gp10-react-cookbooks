@@ -5,6 +5,7 @@ import MenuUI from './MenuUI'
 import BScroll from 'better-scroll'
 
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 const mapState = state => {
   let { category, material } = state.menulist.list
@@ -27,6 +28,7 @@ class MenuContainer extends Component {
     let { type, category, material } = this.props
     return (
       <MenuUI
+        {...this.props}
         type={type}
         currentKey={this.state.currentKey}
         data={type === 'category' ? category : material}
@@ -48,4 +50,4 @@ class MenuContainer extends Component {
   }
 }
 
-export default connect(mapState)(MenuContainer)
+export default connect(mapState)(withRouter(MenuContainer))
