@@ -1,9 +1,9 @@
 import {
   combineReducers
-} from 'redux'
+} from 'redux-immutable'
 
 import { reducer as foodlist } from 'cookbook/swiper/'
-import { reducer as menulist } from 'cookbook/hot-categories'
+import { reducer as menulist } from 'cookbook/hot-categories/'
 
 const reducer = combineReducers({
   foodlist,

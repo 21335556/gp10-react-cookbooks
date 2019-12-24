@@ -6,12 +6,13 @@ import SwiperUI from './SwiperUI'
 
 const mapState = state => {
   return {
-    list: state.foodlist.list.slice(0, 5)
+    // list: state.foodlist.list.slice(0, 5)
+    list: state.getIn(['foodlist', 'list']).slice(0, 5)
   }
 }
 
 const mapDispatch = dispatch => ({
-  loadData: dispatch(asyncLoadData(SwiperContainer))
+  loadData: dispatch(asyncLoadData())
 })
 
 class SwiperContainer extends React.Component {

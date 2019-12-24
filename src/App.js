@@ -6,7 +6,6 @@ import store from './store/index'
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
   Redirect
 } from 'react-router-dom'
 
@@ -20,11 +19,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <Switch>
-            <Redirect from="/" to="/home" exact></Redirect>
-            <Route path="/home"  component={Home}></Route>
-            <Route path="/list" component={List}></Route>
-          </Switch>
+          <Redirect from="/" to="/home" exact></Redirect>
+          <Route path="/home" component={Home}></Route>
+          <Route path="/list" component={List}></Route>
         </Router>
       </Provider>
     )

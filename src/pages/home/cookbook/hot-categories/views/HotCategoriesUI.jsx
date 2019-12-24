@@ -12,7 +12,7 @@ function HotCategoriesUI(props) {
       <Grid data={props.list}
         columnNum={4}
         hasLine={false}
-        onClick={props.onItemClick}
+        onClick={props.onItemClick.bind(this)}
         renderItem={dataItem => (
           <Item
 

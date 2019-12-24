@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import HotCateGoiesUI from './HotCategoriesUI'
+import HotCategoriesUI from './HotCategoriesUI'
 
 import { loadDataAsync } from '../actionCreator'
 
+import { List } from 'immutable'
+
 const mapState = state => ({
-  list: state.menulist.list
+  list: state.getIn(['menulist','list'])
 })
 
 const mapDispatch = (dispatch) => ({
@@ -18,16 +20,21 @@ const mapDispatch = (dispatch) => ({
 
 class HotCateGoies extends Component {
   state = {
-    list: []
+    list: List([])
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if(nextProps.list.category) {
+    if(nextProps.list.getIn('category')) {
       return {
-        list: [...nextProps.list.category['热门'].slice(0, 11), {
+        // list: [...nextProps.list.getIn(['category', '热门']).slice(0, 11), {
+        //   img: '',
+        //   title: '更多...'
+        // }]
+
+        list: nextProps.list.getIn(['category', '热门']).slice(0, 11).push({
           img: '',
           title: '更多...'
-        }]
+        })
       }
     }
 
@@ -36,7 +43,7 @@ class HotCateGoies extends Component {
 
   render() {
     return (
-      <HotCateGoiesUI onItemClick={this.handleItemClick.bind(this)} list={this.state.list}></HotCateGoiesUI>
+      <HotCategoriesUI onItemClick={this.handleItemClick.bind(this)} list={this.state.list.toJS()}></HotCategoriesUI>
     )
   }
 

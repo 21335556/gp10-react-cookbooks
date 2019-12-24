@@ -13,7 +13,7 @@ export default (props) => {
               infinite
             >
               {
-                props.list.map(value => (
+                props.list.toJS().map(value => (
                   <img key={value.id} src={value.img} alt={value.name} />
                 ))
               }
